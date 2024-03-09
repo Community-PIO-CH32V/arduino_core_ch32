@@ -112,9 +112,9 @@ uint32_t getCurrentMicros(void)
            tms = (tms << 32) + *((__IO uint32_t *)SYSTICK_CMPL) + 1;     
 
   if (m1 != m0) {
-    return (m1 * 1000 + ((tms - u1) * 1000) / tms);
+    return (m1 * 1000 + ((u1) * 1000) / tms);
   } else {
-    return (m0 * 1000 + ((tms - u0) * 1000) / tms);
+    return (m0 * 1000 + ((u0) * 1000) / tms);
   }
 }
 
