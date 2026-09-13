@@ -53,8 +53,8 @@
 
 
   /* Exported functions ------------------------------------------------------- */
-  void ch32_interrupt_disable(GPIO_TypeDef *port, uint16_t pin);
-  void ch32_interrupt_enable(GPIO_TypeDef *port, GPIOMode_TypeDef io_mode,uint16_t pin, void (*callback)(void), EXTIMode_TypeDef it_mode, EXTITrigger_TypeDef trigger_mode);
+  void ch32_interrupt_disable(GPIO_TypeDef *port, GPIO_PinMask_TypeDef pin);
+  void ch32_interrupt_enable(GPIO_TypeDef *port, GPIOMode_TypeDef io_mode, GPIO_PinMask_TypeDef pin, void (*callback)(void), EXTIMode_TypeDef it_mode, EXTITrigger_TypeDef trigger_mode);
 
 
 #endif
