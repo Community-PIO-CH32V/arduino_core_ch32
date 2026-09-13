@@ -205,6 +205,8 @@ typedef enum {
 
 
 #if !defined(CH32X035)
+typedef uint16_t GPIO_PinMask_TypeDef;
+
 // High nibble = port number (FirstPort <= PortName <= LastPort)
 // Low nibble  = pin number
 #define CH_PORT(X) (((uint32_t)(X) >> 4) & 0xF)
@@ -216,9 +218,10 @@ typedef enum {
 //#define CH_VALID_PINNAME(X) ((CH_PORT(X) >= FirstPort) && (CH_PORT(X) <= LastPort))
 
 #define CH_VALID_PINNAME(X) (CH_PORT(X) <= LastPort)
-#define CH_GPIO_PIN(X) ((uint16_t)(1<<CH_PIN(X)))
+#define CH_GPIO_PIN(X) ((GPIO_PinMask_TypeDef)(1<<CH_PIN(X)))
 
 #else
+typedef uint32_t GPIO_PinMask_TypeDef;
 
 // High nibble = port number (FirstPort <= PortName <= LastPort)
 // Low nibble  = pin number
@@ -230,7 +233,7 @@ typedef enum {
 // (CH_PORT(X) >= FirstPort)  is always true
 //#define CH_VALID_PINNAME(X) ((CH_PORT(X) >= FirstPort) && (CH_PORT(X) <= LastPort))
 #define CH_VALID_PINNAME(X) (CH_PORT(X) <= LastPort)
-#define CH_GPIO_PIN(X) ((uint32_t)(1<<CH_PIN(X)))
+#define CH_GPIO_PIN(X) ((GPIO_PinMask_TypeDef)(1<<CH_PIN(X)))
 
 #endif
 
